@@ -1,12 +1,10 @@
 const express = require("express");
+const spendController = require("../controllers/spend")
 
 const router = express.Router();
 
 // /api/spend/
-router.post('/', (req,res) => {
-    
-    console.log("Create Spend:",  req.body);
- });
+router.post('/', spendController.createSpend);
 
 // /api/spends/search ? prop=hola&algomas=true
 router.get('/search', () => { 
