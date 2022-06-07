@@ -7,14 +7,12 @@ const router = express.Router();
 router.post('/', spendController.createSpend);
 
 // /api/spends/search ? prop=hola&algomas=true
-router.get('/search', () => { 
-    console.log("One Spend or nothing")
-});
+router.get('/search', spendController.findSpendByType);
 
 // /api/spends/
-router.get('/', () => { 
-    console.log("All spends...")
-});
+router.get('/', spendController.getAllSpends);
+
+/*router.get('/id/:id', spendController.getByID);*/
 
 // /api/spends/algoMas
 router.get('/algomas', () => { });

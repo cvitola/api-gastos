@@ -7,4 +7,4 @@ const pool = mysql.createPool({
     database: "nucba_gastos"
 });
 
-module.exports = pool.createPool();
+module.exports = pool.promise();

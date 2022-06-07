@@ -1,10 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const spendRouter = require("./routes/spend");
+
+const spendRouter = require("./src/routes/spend");
 
 //const db = require("./utils/db");
 
-// --- pedasito para ver como funca primsa 
+/* --- pedasito para ver como funca primsa 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 async function main() {
@@ -28,12 +29,10 @@ main()
     await prisma.$disconnect()
   })
 
-// --- pedasito para ver como funca primsa 
+// --- pedasito para ver como funca primsa */
 
 const app = express();
 app.use(bodyParser.json());
-
-const PORT = 3000;
 
 app.use('/api/spends', spendRouter);
 app.use( ( req, res, next ) => {
@@ -41,6 +40,7 @@ app.use( ( req, res, next ) => {
     res.send();
 });
 
-app.listen(PORT, () => {
-    console.log(`Estoy online en ${PORT}`)
-})
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =>
+  console.log(`🚀 Server ready at: http://localhost:${PORT} ⭐️`)
+);
