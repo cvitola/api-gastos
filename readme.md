@@ -18,7 +18,7 @@ npx prisma migrate dev --name init
 Instalar CLI Prisma para poder manipular la BD desde la App.
 npm install @prisma/client 
 
-#USO DE LA API
+USO DE LA API
 1. Crear un gasto
 pegarle al siguiente endpoint con metodo POST
 http://localhost:3000/api/spends/
