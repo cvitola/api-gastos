@@ -12,9 +12,8 @@ router.get('/search', spendController.findSpendByType);
 // /api/spends/
 router.get('/', spendController.getAllSpends);
 
-/*router.get('/id/:id', spendController.getByID);*/
+router.get('/totalAmount', spendController.totalAmount);
 
-// /api/spends/algoMas
-router.get('/algomas', () => { });
+router.delete('/delete', spendController.deleteById);
 
 module.exports = router;

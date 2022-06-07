@@ -38,8 +38,35 @@ const findSpendByType = async(type) => {
     }
 }
 
+const totalAmount = async() => {
+    let totalAmount = 0;
+    try{
+        const spendsArray = await prisma.spend.findMany();
+        totalAmount = spendsArray.reduce((acum, s) => acum + parseInt(s.amount),0);
+        console.log(`Total de gastos: ${totalAmount}`)
+        return totalAmount;
+    } catch(err){
+        console.log(err);
+        throw new Error (err);
+    }
+}
+
+const deleteById = async(id) => {
+    try{
+        const deleteSpend = await prisma.spend.deleteMany({
+            where: { id:id}
+        })
+        return deleteSpend;
+    } catch(err) {
+        console.log(err);
+        throw new Error (err);
+    }
+}
+
 module.exports = { 
     create,
     getAllSpends,
-    findSpendByType
+    findSpendByType,
+    totalAmount,
+    deleteById
  }

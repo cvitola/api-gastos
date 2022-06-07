@@ -27,3 +27,10 @@ http://localhost:3000/api/spends/
     type: "Un gasto X", -> String formato libre
     amount: 700 -> valor entero.
 }
+2. Recuperar todos los gastos
+pegarle al siguiente endpoint con metodo GET
+http://localhost:3000/api/spends/
+Recibe un array de objetos con todos los gastos.
+3. Recuperar un gasto por Tipo
+pegarle al siguiente endpoint con metodo GET
+http://localhost:3000/api/spends/

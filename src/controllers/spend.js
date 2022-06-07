@@ -24,8 +24,6 @@ const createSpend = async (req,res,next) => {
         res.statusCode = 500;
         res.send(err.message);
     }
-    
-    
 
 }
 
@@ -56,8 +54,38 @@ const findSpendByType = async(req,res,next) => {
     }
 }
 
+const totalAmount = async(req,res,next) => {
+    try{
+        const totalAmount = await spend.totalAmount();
+        console.log("Response Total Amount: ", totalAmount);
+        res.send(`Total Gastos: ${totalAmount}`);
+    } catch(err){
+        console.log(err);
+        res.statusCode = 500;
+        res.send(err.message);
+    }
+}
+
+const deleteById = async(req,res,next) => {
+    if(req.body.id === ""){
+        res.statusCode = 400;
+        res.send("El codigo no puede ser vacío");
+    }
+    try{
+        const deleteSpend = await spend.deleteById(req.body.id);
+        console.log("Delete spend: ", deleteSpend);
+        res.send(deleteSpend);
+    }catch(err){
+        console.log(err);
+        res.statusCode = 500;
+        res.send(err.message);
+    }
+}
+
 module.exports = {
     createSpend,
     getAllSpends,
-    findSpendByType
+    findSpendByType,
+    totalAmount,
+    deleteById
 }
